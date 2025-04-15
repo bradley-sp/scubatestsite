@@ -10,12 +10,15 @@
 
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
-  width: 100%;
-  z-index: 3;
-  position: fixed;
-  border-bottom: 1px solid var(--color-neutral-300);
+    background-color: var(--background-color);
+    width: 100%;
+    z-index: 3;
+    position: fixed;
+    border-bottom: 1px solid var(--color-neutral-300);
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+
 
 header nav {
   box-sizing: border-box;
@@ -187,6 +190,7 @@ header nav .nav-sections ul {
   letter-spacing: var(--type-body-2-strong-letter-spacing);
   list-style: none;
   padding-left: 0;
+
 }
 
 header nav .nav-sections ul > li,
@@ -237,9 +241,10 @@ header nav .nav-sections ul > li:empty {
   }
 
   header nav .nav-sections ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
+      display: flex;
+      gap: 24px;
+      margin: 0;
+      justify-content: center;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li ul {
@@ -330,7 +335,7 @@ header nav .nav-tools {
   grid-area: tools;
   display: flex;
   height: 100%;
-  gap: var(--spacing-small);
+  gap: var(--spacing-xxxsmall);
   align-items: center;
   background: var(--background-color);
   z-index: 3;
@@ -460,6 +465,9 @@ header .nav-search-input .search_autocomplete .popover-container {
 }
 
 /* CSS for auth dropdown */
+.search-wrapper.nav-tools-wrapper {
+    display: none;
+}
 
 .dropdown-wrapper.nav-tools-wrapper .nav-dropdown-button {
   font: var(--type-body-1-default-font) !important;
@@ -482,9 +490,23 @@ header .nav-search-input .search_autocomplete .popover-container {
 }
 
 @media (width >= 1024px) {
+    .dropdown-wrapper.nav-tools-wrapper .arrow {
+        width: 23px;
+        position: absolute;
+        top: -23px;
+        right: 10px;
+        padding-bottom: 20px;
+    }
+
   .dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel {
-    width: 398px;
+      width: 150px;
+      padding: 10px;
+      margin-top: 21px;
   }
+
+    .nav-auth-links ul {
+        padding-left: 20px;
+    }
 }
 
 .dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel .authenticated-user-menu {

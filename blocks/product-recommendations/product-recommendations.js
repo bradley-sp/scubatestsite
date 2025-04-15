@@ -56,7 +56,7 @@ function renderPlaceholder(block) {
   block.innerHTML = `<h2></h2>
   <div class="scrollable">
     <div class="product-grid">
-      ${[...Array(5)].map(() => `
+      ${[...Array(3)].map(() => `
         <div class="placeholder">
           <picture><img width="300" height="375" src="" /></picture>
         </div>
@@ -133,6 +133,12 @@ function renderItems(block, results) {
 
   // Title
   block.querySelector('h2').textContent = recommendation.storefrontLabel;
+
+  // Replace <h2> Attribute title with meta title
+  const relatedEl = document.querySelector('.section.product-recommendations-container');
+  let relatedDataAtt = relatedEl.getAttribute("data-title");
+  const relatedH2 = document.querySelector('.product-recommendations h2');
+  relatedH2.outerHTML = `<h2 class="related-title">${relatedDataAtt}</h2>`;
 
   // Grid
   const grid = block.querySelector('.product-grid');
@@ -298,3 +304,14 @@ export default async function decorate(block) {
     inViewObserver.observe(section);
   }
 }
+
+//add class to center, if related products is 3 or less items
+setTimeout(function(){
+  const productGrid = document.querySelector(".product-grid");
+  const tags = productGrid.getElementsByTagName("div");
+  if (tags.length <= 3) {
+    productGrid.classList.add("related-grid-3");
+    //alert("3 or less");
+  }
+}, 100);
+

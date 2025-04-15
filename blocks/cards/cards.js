@@ -11,8 +11,15 @@ export default function decorate(block) {
       else div.className = 'cards-card-body';
     });
     ul.append(li);
-  });
+
+    // Replace <p> with <button> for Shop Now, while client can change text in button
+    const cardsBodyDiv = li.children[1];
+    const cardsBodyFirst = cardsBodyDiv.children[0];
+    const cardsBodyFirstP = cardsBodyFirst.children[0];
+    cardsBodyFirstP.outerHTML = `<button>${cardsBodyFirstP.textContent}</button>`;
+
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.textContent = '';
   block.append(ul);
+});
 }
