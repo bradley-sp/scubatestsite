@@ -1,6 +1,12 @@
 .product-recommendations {
     overflow: hidden;
     min-height: 512px;
+
+    h2 {
+        letter-spacing: 0px;
+        text-align: center;
+        font-family: kanit, sans-serif;
+    }
 }
 
 .product-recommendations .scrollable {
@@ -14,6 +20,11 @@
     flex-wrap: nowrap;
     gap: 2rem;
     margin: 0;
+
+    &.related-grid-3 {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .product-recommendations .product-grid-item img {

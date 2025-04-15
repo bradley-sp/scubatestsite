@@ -30,8 +30,16 @@ export function renderAuthDropdown(navTools) {
  <div class="dropdown-wrapper nav-tools-wrapper">
     <button type="button" class="nav-dropdown-button" aria-haspopup="dialog" aria-expanded="false" aria-controls="login-modal"></button>
     <div class="nav-auth-menu-panel nav-tools-panel">
+       <div class="nav-auth-links">
+         <ul>
+           <li>Test</li>
+           <li>Test</li>
+           <li>Test</li>
+        </ul>
+        </div>
       <div id="auth-dropin-container"></div>
       <ul class="authenticated-user-menu">
+
          <li><a href="${rootLink('/customer/account')}">My Account</a></li>
           <li><button>Logout</button></li>
       </ul>
@@ -54,15 +62,14 @@ export function renderAuthDropdown(navTools) {
 
   async function toggleDropDownAuthMenu(state) {
     const show = state ?? !authDropDownPanel.classList.contains('nav-tools-panel--show');
-
     authDropDownPanel.classList.toggle('nav-tools-panel--show', show);
+    authDropDownPanel.innerHTML += '<svg version="1.0" xmlns="http://www.w3.org/2000/svg"  class="arrow" width="50.000000pt" height="26.000000pt" viewBox="0 0 50.000000 26.000000"  preserveAspectRatio="xMidYMid meet">  <g transform="translate(0.000000,26.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M127 132 c-64 -64 -117 -120 -117 -123 0 -4 11 -4 25 -1 14 2 25 8 25 12 0 11 179 185 190 185 12 0 190 -172 190 -183 0 -5 11 -12 25 -14 14 -3 25 -3 25 1 0 7 -233 241 -240 241 -3 0 -58 -53 -123 -118z"/> </g> </svg>';
     authDropDownPanel.setAttribute('role', 'dialog');
     authDropDownPanel.setAttribute('aria-hidden', 'false');
     authDropDownPanel.setAttribute('aria-labelledby', 'modal-title');
     authDropDownPanel.setAttribute('aria-describedby', 'modal-description');
     authDropDownPanel.focus();
   }
-
   loginButton.addEventListener('click', () => toggleDropDownAuthMenu());
   document.addEventListener('click', async (e) => {
     const clickOnDropDownPanel = authDropDownPanel.contains(e.target);
@@ -93,7 +100,7 @@ export function renderAuthDropdown(navTools) {
       loginButton.textContent = `Hi, ${getUserNameCookie}`;
     } else {
       authDropDownMenuList.style.display = 'none';
-      authDropinContainer.style.display = 'block';
+      authDropinContainer.style.display = 'none';
       loginButton.innerHTML = `
       <svg
           width="25"
